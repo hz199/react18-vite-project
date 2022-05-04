@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-const Gallery = lazy(async () => import('views/Gallery'))
+const Home = lazy(async () => import('views/Home'))
 const Details = lazy(async () => import('views/Details'))
 
 export default function App(): ReactElement {
@@ -11,7 +11,7 @@ export default function App(): ReactElement {
     <BrowserRouter>
       <Suspense fallback={<LoadingOrError />}>
         <Routes>
-          <Route path="/" element={<Gallery />} />
+          <Route path="/" element={<Home />} />
           <Route path="/Details" element={<Details />} />
         </Routes>
       </Suspense>
