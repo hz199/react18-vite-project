@@ -5,7 +5,7 @@ export interface UserState {
 }
 
 const initialState: UserState = {
-  value: 0,
+  value: 0
 }
 
 export const userSlice = createSlice({
@@ -20,8 +20,8 @@ export const userSlice = createSlice({
     },
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
-    },
-  },
+    }
+  }
 })
 
 export const { increment, decrement, incrementByAmount } = userSlice.actions

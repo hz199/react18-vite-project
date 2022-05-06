@@ -1,4 +1,3 @@
-import React from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks/store'
 import { decrement, increment } from '../stores/modules/user'
 
@@ -26,6 +25,5 @@ function Home() {
     </div>
   )
 }
-
 
 export default Home
