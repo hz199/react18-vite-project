@@ -1,5 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../hooks/store'
 import { decrement, increment } from '../stores/modules/user'
+import { Button } from 'antd'
 
 function Home() {
   const count = useAppSelector((state) => state.user.value)
@@ -7,6 +8,7 @@ function Home() {
 
   return (
     <div>
+      <Button>点击</Button>
       <div>
         <button
           aria-label="Increment value"
