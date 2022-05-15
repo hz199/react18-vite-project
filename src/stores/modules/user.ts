@@ -21,7 +21,8 @@ export const userSlice = createSlice({
     incrementByAmount: (state, action: PayloadAction<number>) => {
       state.value += action.payload
     }
-  }
+  },
+  extraReducers: () => {}
 })
 
 export const { increment, decrement, incrementByAmount } = userSlice.actions
