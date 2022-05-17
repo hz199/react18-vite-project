@@ -5,6 +5,10 @@ import vitePluginImp from 'vite-plugin-imp'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    assetsDir: 'assets',
+    cssCodeSplit: false // 是否拆分css
+  },
   plugins: [
     react(),
     tsconfigPaths(),
@@ -16,7 +20,7 @@ export default defineConfig({
             // use less
             return `antd/es/${name}/style/index.js`
           }
-        },
+        }
       ]
     })
   ]
