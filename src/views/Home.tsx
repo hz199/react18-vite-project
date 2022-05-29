@@ -1,28 +1,36 @@
 import { useAppDispatch, useAppSelector } from '../hooks/store'
 import { decrement, increment } from '../stores/modules/user'
 import { Button } from 'antd'
+import { useQuery } from 'react-query'
+import { getUserInfo } from '../server/user'
+import { Link } from 'react-router-dom'
 
 function Home() {
   const count = useAppSelector((state) => state.user.value)
   const dispatch = useAppDispatch()
 
+  const { isLoading, status, data } = useQuery('user', () => getUserInfo())
+  console.log(isLoading, status)
+
   return (
     <div>
-      <Button>点击</Button>
+      <Link to="/details">
+        <Button>点击</Button>
+      </Link>
       <div>
-        <button
-          aria-label="Increment value"
+        <Button
+          type="primary"
           onClick={() => dispatch(increment())}
         >
           Increment
-        </button>
+        </Button>
         <span>{count}</span>
-        <button
-          aria-label="Decrement value"
+        <Button
+          type="ghost"
           onClick={() => dispatch(decrement())}
         >
           Decrement
-        </button>
+        </Button>
       </div>
     </div>
   )

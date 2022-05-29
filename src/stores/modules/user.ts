@@ -22,7 +22,9 @@ export const userSlice = createSlice({
       state.value += action.payload
     }
   },
-  extraReducers: () => {}
+  extraReducers: () => {
+    // TODO
+  }
 })
 
 export const { increment, decrement, incrementByAmount } = userSlice.actions
