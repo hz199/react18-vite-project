@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 // https://blog.51cto.com/u_3409716/3031548
 
 function Details() {
-
   return (
     <div>
       <br />

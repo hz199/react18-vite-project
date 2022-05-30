@@ -8,9 +8,7 @@ import viteMockPlugin from './plugins/vitePluginMock'
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [
-      { find: '@', replacement: path.resolve(__dirname, 'src') },
-    ]
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }]
   },
   build: {
     assetsDir: 'assets',

@@ -9,7 +9,7 @@ function Home() {
   const count = useAppSelector((state) => state.user.value)
   const dispatch = useAppDispatch()
 
-  const { isLoading, status, data } = useQuery('user', () => getUserInfo())
+  const { isLoading, status } = useQuery('user', () => getUserInfo())
   console.log(isLoading, status)
 
   return (
@@ -18,17 +18,11 @@ function Home() {
         <Button>点击</Button>
       </Link>
       <div>
-        <Button
-          type="primary"
-          onClick={() => dispatch(increment())}
-        >
+        <Button type="primary" onClick={() => dispatch(increment())}>
           Increment
         </Button>
         <span>{count}</span>
-        <Button
-          type="ghost"
-          onClick={() => dispatch(decrement())}
-        >
+        <Button type="ghost" onClick={() => dispatch(decrement())}>
           Decrement
         </Button>
       </div>
