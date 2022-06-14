@@ -26,8 +26,8 @@ function matchRoute<T>(
   mockApiMaps: MockResponseConfig<T>
 ) {
   const url = req.url
-  const method = req.method.toLowerCase()
-  const result = mockApiMaps[url]
+  const method = req.method?.toLowerCase()
+  const result = mockApiMaps[url!]
 
   if (result) {
     if (result.method.toLowerCase() === method) {
@@ -61,7 +61,7 @@ export default function <T extends object>(options: MockOptions = {}): Plugin {
     name: 'ViteMockPlugin',
     configureServer: function (server) {
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const mockApiMaps = require(options.entry) as MockResponseConfig<T>
+      const mockApiMaps = require(options.entry!) as MockResponseConfig<T>
       const middleware: Connect.NextHandleFunction = (req, res, next) => {
         const route = matchRoute<T>(req, mockApiMaps)
         if (route) {
