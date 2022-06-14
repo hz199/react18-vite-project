@@ -42,7 +42,9 @@ function matchRoute<T>(
   }
 }
 
-export default function <T extends object>(options: MockOptions = {}): Plugin {
+export default function <T extends object>(
+  options: MockOptions = {}
+): Plugin | null {
   options.entry = options.entry || './mocks/index.ts'
 
   if (!path.isAbsolute(options.entry)) {
