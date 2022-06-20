@@ -6,15 +6,13 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
 import vitePluginImp from 'vite-plugin-imp'
 import viteMockPlugin from './plugins/vitePluginMock'
 
-console.log(process.env.NODE_ENV)
-
 const pwaOptions: Partial<VitePWAOptions> = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   base: '/',
   includeAssets: ['favicon.svg'],
   manifest: {
-    name: 'PWA Router',
-    short_name: 'PWA Router',
+    name: 'PWA React',
+    short_name: 'PWA React',
     theme_color: '#ffffff',
     icons: [
       {
