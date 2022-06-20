@@ -6,8 +6,10 @@ import { VitePWA, VitePWAOptions } from 'vite-plugin-pwa'
 import vitePluginImp from 'vite-plugin-imp'
 import viteMockPlugin from './plugins/vitePluginMock'
 
+console.log(process.env.NODE_ENV)
+
 const pwaOptions: Partial<VitePWAOptions> = {
-  mode: 'development',
+  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   base: '/',
   includeAssets: ['favicon.svg'],
   manifest: {
@@ -35,7 +37,6 @@ const pwaOptions: Partial<VitePWAOptions> = {
   },
   devOptions: {
     enabled: process.env.SW_DEV === 'true',
-    /* when using generateSW the PWA plugin will switch to classic */
     type: 'module',
     navigateFallback: 'index.html'
   }
