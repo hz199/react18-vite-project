@@ -4,5 +4,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ['src/**/*.ts(x)'],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
-  modulePaths: ['<rootDir>/src/', '<rootDir>/.jest']
+  modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
+  testMatch: ['**/__tests__/*.(js|jsx|ts|tsx)'],
+  moduleFileExtensions: ['js', 'ts', 'tsx', 'json']
 }
