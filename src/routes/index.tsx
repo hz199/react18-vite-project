@@ -3,8 +3,8 @@ import type { ReactElement } from 'react'
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-const Home = lazy(async () => import('views/Home'))
-const Details = lazy(async () => import('views/Details'))
+const Home = lazy(async () => import('@/views/Home'))
+const Details = lazy(async () => import('@/views/Details'))
 
 export default function App(): ReactElement {
   return (
