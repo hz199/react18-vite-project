@@ -1,5 +1,10 @@
 import axios from 'axios'
 
+export interface ResponseData<T = any> {
+  code: number
+  result: T
+}
+
 const fetch = axios.create({
   baseURL: '/'
 })

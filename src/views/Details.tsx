@@ -1,3 +1,4 @@
+import { getUserInfo } from '@/server/user'
 import { Button } from 'antd'
 import { Link } from 'react-router-dom'
 
@@ -6,6 +7,9 @@ import { Link } from 'react-router-dom'
 function Details() {
   const fetchUserInfo = () => {
     // TODO
+    getUserInfo().then((res) => {
+      console.log(res.data)
+    })
   }
 
   return (
