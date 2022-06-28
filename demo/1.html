@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>MAC底部缩放停靠栏</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    html body {
+      height: 100%;
+    }
+
+    html body #wrap {
+      height: 600px;
+      width: 800px;
+      position: absolute;
+      background: skyblue;
+      border: 10px solid steelblue;
+      border-radius: 8%;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      box-shadow: 2px 5px 5px #000000;
+    }
+
+    html body #wrap h1 {
+      position: absolute;
+      text-align: center;
+      color: tomato;
+      top: 30%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    html body #wrap h2 {
+      position: absolute;
+      float: right;
+      margin-right: 10%;
+      color: white;
+      top: 40%;
+      right: -10%;
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    html body #wrap #wrap-imgs {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    html body #wrap #wrap-imgs img {
+      width: 80px;
+      margin: 0 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="wrap">
+    <div>
+      <h1>MAC底部缩放停靠栏</h1>
+      <h2>PS：一刀coder</h2>
+    </div>
+    <div id="wrap-imgs">
+      <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.APfPp-8Tk4Vxg2xvh2wAewHaEo?w=265&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" />
+      <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.APfPp-8Tk4Vxg2xvh2wAewHaEo?w=265&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" />
+      <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.APfPp-8Tk4Vxg2xvh2wAewHaEo?w=265&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" />
+      <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.APfPp-8Tk4Vxg2xvh2wAewHaEo?w=265&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" />
+      <img src="https://tse2-mm.cn.bing.net/th/id/OIP-C.APfPp-8Tk4Vxg2xvh2wAewHaEo?w=265&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7" />
+    </div>
+
+  </div>
+</body>
+<script>
+  $(function () {
+    var wrapNode = document.querySelector("#wrap");
+    //获取所有图片
+    var wrapImgsNode = document.querySelectorAll("#wrap > #wrap-imgs > img");
+    //半径:半径越大，img缩放越小
+    var imgRadius = 400;
+
+    //鼠标移动，大于半径则发生scale
+    document.onmousemove = function (e) {
+      e = e || event;
+      for (var i = 0; i < wrapImgsNode.length; i++) {
+        /* 每张图片对应的X/Y(img到视口的距离+img宽度的1/2-)
+         * x轴坐标width=元素left+元素width/2-鼠标落点x
+        	|- imgNode.getBoundingClientRect().left + imgNode.offsetWidth/2 + e.clientX
+           y轴坐标width=元素top+元素height/2-鼠标落点y
+        	|- imgNode.getBoundingClientRect().top + imgNode.offsetHeight/2 + e.clientY
+        	斜边=半径=开方
+         */
+        var imgX = wrapImgsNode[i].getBoundingClientRect().left + wrapImgsNode[i].offsetWidth / 2 - e.clientX;
+        var imgY = wrapImgsNode[i].getBoundingClientRect().top + wrapImgsNode[i].offsetHeight / 2 - e.clientY;
+        var imgbevelLine = Math.sqrt(imgX * imgX + imgY * imgY);
+
+        //半径=128，imgbevelLine=直径128，img覆盖范围半径64，bevelLine越小，img越大
+        if (imgbevelLine >= imgRadius) {
+          //大于130，img的大小不变
+          imgbevelLine = imgRadius;
+        }
+        //imgbevelLine斜边+比例越大，width越小
+        wrapImgsNode[i].style.width = 160 - imgbevelLine * 0.2 + "px";
+      }
+    }
+  })
+
+</script>
+
+</html>
