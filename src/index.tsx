@@ -4,6 +4,7 @@ import 'tailwindcss/tailwind.css'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 
+import './i18n/config'
 import { rootStore } from './stores'
 import App from './routes/index'
 
